@@ -1,0 +1,175 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+}
+
+#title {
+    text-align: center;
+    font-size: 2.5rem;
+    animation: blink 1.5s infinite;
+    background: linear-gradient(90deg, #ff6a00, #ee0979);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #333;
+    text-align: left;
+}
+
+th:nth-child(2), td:nth-child(2) {
+    width: auto; /* Permite que o input controle a largura */
+}
+
+td:nth-child(1) input {
+    width: 100%; /* Faz o input ocupar 100% da largura disponível */
+    box-sizing: border-box; /* Inclui padding e borda no cálculo da largura */
+}
+
+td:nth-child(2) input {
+    width: 5ch; /* Define a largura para 5 caracteres */
+    max-width: 50px; /* Define um valor máximo de largura */
+    min-width: 30%; /* Define um valor mínimo de largura para dispositivos móveis */
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #ff6a00;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #ee0979;
+}
+
+.actions {
+    display: flex; /* Usar flexbox para alinhar os botões */
+    flex-direction: row; /* Alinhar os botões na horizontal */
+    gap: 5px; /* Espaçamento entre os botões */
+    align-items: center; /* Alinha verticalmente os itens no centro */
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.popup-content {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 90%;
+    max-height: 90%;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+textarea {
+    width: 100%;
+    height: calc(100vh - 200px);
+    max-height: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #222;
+    border: 1px solid #444;
+    color: white;
+    box-sizing: border-box;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px 0;
+    background-color: #333;
+    width: 100%;
+}
+
+footer p {
+    margin: 5px 0;
+    color: #bbb;
+}
+
+footer a {
+    color: #ff6a00;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ee0979;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px; /* Reduzir o padding em dispositivos móveis */
+    }
+
+    #title {
+        font-size: 2rem; /* Diminuir o tamanho do título */
+    }
+
+    table, th, td {
+        font-size: 0.9rem; /* Ajustar o tamanho da fonte da tabela */
+        padding: 5px; /* Reduzir o padding da tabela */
+    }
+
+    td:nth-child(2) input {
+        width: 100%; /* Faz o input ocupar 100% da largura disponível em dispositivos móveis */
+        max-width: none; /* Remove o máximo para permitir que se expanda */
+    }
+
+    .actions {
+        flex-direction: column; /* Mudar para coluna em dispositivos móveis */
+    }
+}
