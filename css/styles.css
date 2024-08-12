@@ -23,6 +23,26 @@ body {
     background: linear-gradient(90deg, #ff6a00, #ee0979);
     -webkit-background-clip: text;
     color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    padding: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #ff7e14;
+}
+
+.description {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 5px;
+    color: #bbb;
+    font-style: italic;
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
 }
 
 @keyframes blink {
@@ -44,30 +64,56 @@ th, td {
     padding: 10px;
     border: 1px solid #333;
     text-align: left;
+    transition: background-color 0.3s;
+    vertical-align: middle;
+}
+
+tr:hover {
+    background-color: #1a1a1a;
+}
+
+th:nth-child(1), td:nth-child(1) {
+    width: auto;
 }
 
 th:nth-child(2), td:nth-child(2) {
-    width: auto; /* Permite que o input controle a largura */
+    width: 40px;
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 100px;
+    text-align: center; /* Centraliza o conteúdo da coluna "Letra" */
+}
+
+th:nth-child(4), td:nth-child(4) {
+    width: 60px;
+    text-align: center; /* Centraliza o conteúdo da coluna "Ações" */
 }
 
 td:nth-child(1) input {
-    width: 100%; /* Faz o input ocupar 100% da largura disponível */
-    box-sizing: border-box; /* Inclui padding e borda no cálculo da largura */
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
+    height: 40px;
+    line-height: 40px;
 }
 
 td:nth-child(2) input {
-    width: 5ch; /* Define a largura para 5 caracteres */
-    max-width: 50px; /* Define um valor máximo de largura */
-    min-width: 30%; /* Define um valor mínimo de largura para dispositivos móveis */
+    width: 5ch;
+    max-width: 60px;
+    min-width: 30%;
+    font-size: 1rem;
+    height: 40px;
+    line-height: 40px;
 }
 
 button {
     padding: 8px 15px;
     background-color: #ff6a00;
-    border: none;
+    border: 1px solid black;
     color: white;
     cursor: pointer;
-    margin-top: 10px;
+    height: 40px;
 }
 
 button:hover {
@@ -75,10 +121,11 @@ button:hover {
 }
 
 .actions {
-    display: flex; /* Usar flexbox para alinhar os botões */
-    flex-direction: row; /* Alinhar os botões na horizontal */
-    gap: 5px; /* Espaçamento entre os botões */
-    align-items: center; /* Alinha verticalmente os itens no centro */
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center; /* Centraliza os botões na coluna "Ações" */
 }
 
 .popup {
@@ -152,24 +199,28 @@ footer a:hover {
 
 @media (max-width: 600px) {
     body {
-        padding: 10px; /* Reduzir o padding em dispositivos móveis */
+        padding: 10px;
     }
 
     #title {
-        font-size: 2rem; /* Diminuir o tamanho do título */
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
     }
 
     table, th, td {
-        font-size: 0.9rem; /* Ajustar o tamanho da fonte da tabela */
-        padding: 5px; /* Reduzir o padding da tabela */
+        font-size: 0.9rem;
+        padding: 5px;
     }
 
     td:nth-child(2) input {
-        width: 100%; /* Faz o input ocupar 100% da largura disponível em dispositivos móveis */
-        max-width: none; /* Remove o máximo para permitir que se expanda */
+        width: 100%;
+        max-width: none;
     }
 
     .actions {
-        flex-direction: column; /* Mudar para coluna em dispositivos móveis */
+        flex-direction: column;
     }
 }
