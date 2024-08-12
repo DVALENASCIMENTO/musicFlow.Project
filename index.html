@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicFlow</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>  
+    <div class="container">
+        <h1 id="title">MusicFlow</h1>
+        <table id="music-table">
+            <thead>
+                <tr>
+                    <th>Música</th>
+                    <th>Tom</th>
+                    <th>Letra</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            
+            <tbody id="music-list">
+                <!-- Linhas das músicas serão inseridas aqui -->
+            </tbody>
+        </table>
+        <button id="add-music">Adicionar Nova Música</button>
+    </div>
+
+    <!-- Popup para editar letra -->
+    <div id="lyrics-popup" class="popup">
+        <div class="popup-content">
+            <span id="close-popup" class="close">&times;</span>
+            <textarea id="lyrics-editor"></textarea>
+            <button id="save-lyrics">Salvar Letra</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Diego Vale do Nascimento - Analista e Desenvolvedor de Sistemas</p>
+        <p>
+            <a href="https://www.linkedin.com/in/diego-vale-do-nascimento-48212215b/" target="_blank">LinkedIn</a> |
+            <a href="https://github.com/DVALENASCIMENTO" target="_blank">GitHub</a>
+        </p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
