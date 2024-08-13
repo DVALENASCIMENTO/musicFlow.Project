@@ -55,6 +55,33 @@ function setupRemoveButton(button) {
             isConfirming = false; // Desativar modo de confirmação
         }
     });
+    
+    // Eventos para dispositivos móveis
+    button.addEventListener('touchstart', buttonClickHandler);
+    button.addEventListener('touchend', buttonClickHandler);
+}
+
+function buttonClickHandler(event) {
+    event.preventDefault(); // Impede o comportamento padrão
+    const button = event.target;
+
+    if (event.type === 'touchstart') {
+        // Ação de tocar (confirmação)
+        if (!button.classList.contains('confirming')) {
+            button.textContent = '✔️';
+            button.classList.add('confirming');
+        } else {
+            const row = button.closest('tr');
+            row.remove();
+            saveToLocalStorage(); // Salvar as alterações no localStorage
+        }
+    } else if (event.type === 'touchend') {
+        // Reverter se necessário
+        if (button.classList.contains('confirming')) {
+            button.textContent = 'X'; // Retornar ao símbolo original
+            button.classList.remove('confirming');
+        }
+    }
 }
 
 function editLyrics(button) {
