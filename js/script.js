@@ -18,7 +18,10 @@ function addMusic() {
     musicCell.innerHTML = `<input type="text" name="music" placeholder="Nome da música">`;
     toneCell.innerHTML = `<input type="text" name="tom" placeholder="Tom" maxlength="5">`;
     lyricsCell.innerHTML = `<button onclick="editLyrics(this)">Letra</button>`;
-    actionsCell.innerHTML = `<button onclick="toggleDrag(this)">⇅</button>`;
+    actionsCell.innerHTML = `
+        <button onclick="moveUp(this)">⬆️</button>
+        <button onclick="moveDown(this)">⬇️</button>
+    `;
     deleteCell.innerHTML = `<button class="remove-button" style="color: red;">X</button>`;
 
     // Adiciona eventos de arrasto à nova linha
@@ -55,33 +58,6 @@ function setupRemoveButton(button) {
             isConfirming = false; // Desativar modo de confirmação
         }
     });
-    
-    // Eventos para dispositivos móveis
-    button.addEventListener('touchstart', buttonClickHandler);
-    button.addEventListener('touchend', buttonClickHandler);
-}
-
-function buttonClickHandler(event) {
-    event.preventDefault(); // Impede o comportamento padrão
-    const button = event.target;
-
-    if (event.type === 'touchstart') {
-        // Ação de tocar (confirmação)
-        if (!button.classList.contains('confirming')) {
-            button.textContent = '✔️';
-            button.classList.add('confirming');
-        } else {
-            const row = button.closest('tr');
-            row.remove();
-            saveToLocalStorage(); // Salvar as alterações no localStorage
-        }
-    } else if (event.type === 'touchend') {
-        // Reverter se necessário
-        if (button.classList.contains('confirming')) {
-            button.textContent = 'X'; // Retornar ao símbolo original
-            button.classList.remove('confirming');
-        }
-    }
 }
 
 function editLyrics(button) {
@@ -107,14 +83,23 @@ function closePopup() {
     document.getElementById('lyrics-popup').style.display = 'none';
 }
 
-function toggleDrag(button) {
+// Função para mover a linha para cima
+function moveUp(button) {
     const row = button.parentNode.parentNode;
-    if (row.draggable) {
-        row.draggable = false;
-        button.textContent = '⇅'; // Reseta o botão para o estado inicial
-    } else {
-        row.draggable = true;
-        button.textContent = '🔄'; // Mudança de ícone quando arrastável
+    const previousRow = row.previousElementSibling;
+    if (previousRow) {
+        row.parentNode.insertBefore(row, previousRow);
+        saveToLocalStorage(); // Salvar as alterações no localStorage
+    }
+}
+
+// Função para mover a linha para baixo
+function moveDown(button) {
+    const row = button.parentNode.parentNode;
+    const nextRow = row.nextElementSibling;
+    if (nextRow) {
+        row.parentNode.insertBefore(nextRow, row);
+        saveToLocalStorage(); // Salvar as alterações no localStorage
     }
 }
 
@@ -173,7 +158,10 @@ function loadFromLocalStorage() {
         musicCell.innerHTML = `<input type="text" name="music" placeholder="Nome da música" value="${data.music}">`;
         toneCell.innerHTML = `<input type="text" name="tom" placeholder="Tom" maxlength="5" value="${data.tone}">`;
         lyricsCell.innerHTML = `<button onclick="editLyrics(this)" data-lyrics="${data.lyrics}">Letra</button>`;
-        actionsCell.innerHTML = `<button onclick="toggleDrag(this)">⇅</button>`;
+        actionsCell.innerHTML = `
+            <button onclick="moveUp(this)">↑</button>
+            <button onclick="moveDown(this)">↓</button>
+        `;
         deleteCell.innerHTML = `<button class="remove-button" style="color: red;">X</button>`;
 
         // Adiciona eventos de arrasto à nova linha
