@@ -3,6 +3,7 @@ document.getElementById('close-popup').addEventListener('click', closePopup);
 document.getElementById('save-lyrics').addEventListener('click', saveLyrics);
 
 let currentEditingIndex = null;
+let draggedRow = null;
 
 function addMusic() {
     const table = document.getElementById('music-list');
@@ -12,14 +13,19 @@ function addMusic() {
     const toneCell = row.insertCell(1);
     const lyricsCell = row.insertCell(2);
     const actionsCell = row.insertCell(3);
+    const deleteCell = row.insertCell(4);
 
     musicCell.innerHTML = `<input type="text" name="music" placeholder="Nome da música">`;
     toneCell.innerHTML = `<input type="text" name="tom" placeholder="Tom" maxlength="5">`;
     lyricsCell.innerHTML = `<button onclick="editLyrics(this)">Letra</button>`;
-    actionsCell.innerHTML = `
-        <button onclick="moveUp(this)">↑</button>
-        <button onclick="moveDown(this)">↓</button>
-    `;
+    actionsCell.innerHTML = `<button onclick="toggleDrag(this)">⇅</button>`;
+    deleteCell.innerHTML = `<button onclick="deleteRow(this)" style="color: red;">X</button>`;
+
+    // Adiciona eventos de arrasto à nova linha
+    row.draggable = true;
+    row.addEventListener('dragstart', dragStart);
+    row.addEventListener('dragover', dragOver);
+    row.addEventListener('drop', drop);
 
     saveToLocalStorage(); // Salvar as alterações no localStorage
 }
@@ -47,22 +53,40 @@ function closePopup() {
     document.getElementById('lyrics-popup').style.display = 'none';
 }
 
-function moveUp(button) {
+function toggleDrag(button) {
     const row = button.parentNode.parentNode;
-    const previousRow = row.previousElementSibling;
-
-    if (previousRow) {
-        row.parentNode.insertBefore(row, previousRow);
-        saveToLocalStorage(); // Salvar as alterações no localStorage
+    if (row.draggable) {
+        row.draggable = false;
+        button.textContent = '⇅'; // Reseta o botão para o estado inicial
+    } else {
+        row.draggable = true;
+        button.textContent = '🔄'; // Mudança de ícone quando arrastável
     }
 }
 
-function moveDown(button) {
+function deleteRow(button) {
     const row = button.parentNode.parentNode;
-    const nextRow = row.nextElementSibling;
+    row.parentNode.removeChild(row);
+    saveToLocalStorage(); // Salvar as alterações no localStorage
+}
 
-    if (nextRow) {
-        row.parentNode.insertBefore(nextRow, row);
+// Funções de arrasto
+function dragStart(event) {
+    draggedRow = event.target;
+    event.dataTransfer.effectAllowed = 'move';
+}
+
+function dragOver(event) {
+    event.preventDefault(); // Permite o arrasto
+}
+
+function drop(event) {
+    event.preventDefault();
+    const targetRow = event.target.closest('tr');
+
+    if (targetRow && draggedRow !== targetRow) {
+        const table = document.getElementById('music-list');
+        table.insertBefore(draggedRow, targetRow.nextSibling);
         saveToLocalStorage(); // Salvar as alterações no localStorage
     }
 }
@@ -96,14 +120,19 @@ function loadFromLocalStorage() {
         const toneCell = row.insertCell(1);
         const lyricsCell = row.insertCell(2);
         const actionsCell = row.insertCell(3);
+        const deleteCell = row.insertCell(4);
 
         musicCell.innerHTML = `<input type="text" name="music" placeholder="Nome da música" value="${data.music}">`;
         toneCell.innerHTML = `<input type="text" name="tom" placeholder="Tom" maxlength="5" value="${data.tone}">`;
         lyricsCell.innerHTML = `<button onclick="editLyrics(this)" data-lyrics="${data.lyrics}">Letra</button>`;
-        actionsCell.innerHTML = `
-            <button onclick="moveUp(this)">↑</button>
-            <button onclick="moveDown(this)">↓</button>
-        `;
+        actionsCell.innerHTML = `<button onclick="toggleDrag(this)">⇅</button>`;
+        deleteCell.innerHTML = `<button onclick="deleteRow(this)" style="color: red;">X</button>`;
+
+        // Adiciona eventos de arrasto à nova linha
+        row.draggable = true;
+        row.addEventListener('dragstart', dragStart);
+        row.addEventListener('dragover', dragOver);
+        row.addEventListener('drop', drop);
     });
 }
 
