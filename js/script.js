@@ -19,7 +19,7 @@ function addMusic() {
     toneCell.innerHTML = `<input type="text" name="tom" placeholder="Tom" maxlength="5">`;
     lyricsCell.innerHTML = `<button onclick="editLyrics(this)">Letra</button>`;
     actionsCell.innerHTML = `<button onclick="toggleDrag(this)">⇅</button>`;
-    deleteCell.innerHTML = `<button onclick="deleteRow(this)" style="color: red;">X</button>`;
+    deleteCell.innerHTML = `<button class="remove-button" style="color: red;">X</button>`;
 
     // Adiciona eventos de arrasto à nova linha
     row.draggable = true;
@@ -27,7 +27,34 @@ function addMusic() {
     row.addEventListener('dragover', dragOver);
     row.addEventListener('drop', drop);
 
+    // Adiciona a funcionalidade de confirmação de remoção
+    const removeButton = deleteCell.querySelector('.remove-button');
+    setupRemoveButton(removeButton);
+
     saveToLocalStorage(); // Salvar as alterações no localStorage
+}
+
+function setupRemoveButton(button) {
+    let isConfirming = false; // Estado para rastrear o modo de confirmação
+
+    button.addEventListener('dblclick', () => {
+        if (!isConfirming) {
+            button.textContent = '✔️'; // Mudar para símbolo de confirmação
+            isConfirming = true; // Ativar modo de confirmação
+        } else {
+            const row = button.closest('tr');
+            row.remove();
+            saveToLocalStorage(); // Salvar as alterações no localStorage
+        }
+    });
+
+    // Se o usuário clicar fora do botão, reverter o estado
+    document.addEventListener('click', (event) => {
+        if (!button.contains(event.target) && isConfirming) {
+            button.textContent = 'X'; // Retornar ao símbolo original
+            isConfirming = false; // Desativar modo de confirmação
+        }
+    });
 }
 
 function editLyrics(button) {
@@ -62,12 +89,6 @@ function toggleDrag(button) {
         row.draggable = true;
         button.textContent = '🔄'; // Mudança de ícone quando arrastável
     }
-}
-
-function deleteRow(button) {
-    const row = button.parentNode.parentNode;
-    row.parentNode.removeChild(row);
-    saveToLocalStorage(); // Salvar as alterações no localStorage
 }
 
 // Funções de arrasto
@@ -126,13 +147,17 @@ function loadFromLocalStorage() {
         toneCell.innerHTML = `<input type="text" name="tom" placeholder="Tom" maxlength="5" value="${data.tone}">`;
         lyricsCell.innerHTML = `<button onclick="editLyrics(this)" data-lyrics="${data.lyrics}">Letra</button>`;
         actionsCell.innerHTML = `<button onclick="toggleDrag(this)">⇅</button>`;
-        deleteCell.innerHTML = `<button onclick="deleteRow(this)" style="color: red;">X</button>`;
+        deleteCell.innerHTML = `<button class="remove-button" style="color: red;">X</button>`;
 
         // Adiciona eventos de arrasto à nova linha
         row.draggable = true;
         row.addEventListener('dragstart', dragStart);
         row.addEventListener('dragover', dragOver);
         row.addEventListener('drop', drop);
+
+        // Configura o botão de remoção
+        const removeButton = deleteCell.querySelector('.remove-button');
+        setupRemoveButton(removeButton);
     });
 }
 
