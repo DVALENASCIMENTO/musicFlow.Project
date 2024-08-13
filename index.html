@@ -5,8 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MusicFlow</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .dragging {
+            opacity: 0.5;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .popup-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /* Estilos adicionais para o título e descrição */
+        #title {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
 </head>
-<body>  
+<body>
     <div class="container">
         <h1 id="title">MusicFlow</h1>
         <h2 id="subtitle" class="subtitle">Repertório</h2> <!-- Subtítulo -->
@@ -19,6 +65,7 @@
                     <th>Tom</th>
                     <th>Letra</th>
                     <th>Ações</th>
+                    <th style="display:none;">Remover</th> <!-- Coluna oculta -->
                 </tr>
             </thead>
             
@@ -26,7 +73,7 @@
                 <!-- Linhas das músicas serão inseridas aqui -->
             </tbody>
         </table>
-        <button id="add-music">Adicionar Nova Música</button>
+        <button id="add-music" class="add-music">Adicionar Nova Música</button>
     </div>
 
     <!-- Popup para editar letra -->
