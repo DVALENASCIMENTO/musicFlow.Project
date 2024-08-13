@@ -63,7 +63,7 @@ table {
 th, td {
     padding: 10px; /* Adiciona um espaçamento interno de 10px nas células da tabela */
     border: 1px solid #333; /* Adiciona uma borda sólida de 1px de cor cinza escuro nas células */
-    text-align: left; /* Alinha o texto à esquerda nas células */
+    text-align: center; /* Alinha o texto à esquerda nas células */
     transition: background-color 0.3s; /* Define uma transição suave de 0.3s para a cor de fundo ao passar o mouse */
     vertical-align: middle; /* Alinha verticalmente o conteúdo das células ao centro */
 }
@@ -96,16 +96,19 @@ td:nth-child(1) input {
     font-size: 1rem; /* Define o tamanho da fonte do input como 1 rem */
     height: 45px; /* Define a altura do input como 40px */
     line-height: 40px; /* Define a altura da linha do texto como 40px, centralizando verticalmente */
+    text-align: center;
 }
 
 td:nth-child(2) input {
-    width: 5ch; /* Define a largura do input baseada no tamanho de 5 caracteres */
+    width: 4ch; /* Define a largura do input baseada no tamanho de 5 caracteres */
     max-width: 60px; /* Define a largura máxima do input como 60px */
     min-width: 30%; /* Define a largura mínima do input como 30% da célula */
     font-size: 1rem; /* Define o tamanho da fonte do input como 1 rem */
     height: 40px; /* Define a altura do input como 40px */
     line-height: 40px; /* Define a altura da linha do texto como 40px, centralizando verticalmente */
+    text-align: center;
 }
+
 
 button {
     padding: 8px 15px; /* Adiciona um espaçamento interno de 8px nas extremidades e 15px nos lados */
@@ -113,12 +116,30 @@ button {
     border: 1px solid black; /* Adiciona uma borda sólida preta de 1px ao botão */
     color: white; /* Define a cor do texto do botão como branca */
     cursor: pointer; /* Muda o cursor para uma mãozinha ao passar o mouse sobre o botão */
-    height: 45px; /* Define a altura do botão como 40px */
+    height: 45px; /* Define a altura do botão como 45px */
 }
 
 button:hover {
-    background-color: #ee0979; /* Muda a cor de fundo do botão para rosa ao passar o mouse */
+    background-color: #7a2d01; /* Muda a cor de fundo do botão para rosa ao passar o mouse */
 }
+
+.add-music {
+    margin-top: 10px;
+    padding: 10px 20px; /* Adiciona um espaçamento interno maior */
+    background-color: #ff6a00; /* Define a cor de fundo como verde */
+    border: 1px solid #ff6a00; /* Adiciona uma borda sólida verde mais escuro */
+    color: white; /* Define a cor do texto como branca */
+    font-size: 1rem; /* Define o tamanho da fonte como 1 rem */
+    border-radius: 5px; /* Arredonda os cantos do botão */
+    transition: background-color 0.3s, transform 0.2s; /* Adiciona transições para a cor de fundo e transformação */
+    cursor: pointer; /* Muda o cursor para uma mãozinha ao passar o mouse sobre o botão */
+}
+
+.add-music:hover {
+    background-color: #7a2d01; /* Muda a cor de fundo para um verde mais escuro ao passar o mouse */
+    transform: scale(1.05); /* Aumenta levemente o tamanho do botão ao passar o mouse */
+}
+
 
 .actions {
     display: flex; /* Define o layout das ações como flexbox */
@@ -199,12 +220,12 @@ footer p {
 }
 
 footer a {
-    color: #ff6a00; /* Define a cor dos links no rodapé como laranja */
+    color: #18c9ff; /* Define a cor dos links no rodapé como laranja */
     text-decoration: none; /* Remove a sublinha dos links no rodapé */
 }
 
 footer a:hover {
-    color: #ee0979; /* Muda a cor dos links para rosa ao passar o mouse */
+    color: #ff6a00; /* Muda a cor dos links para rosa ao passar o mouse */
     text-decoration: underline; /* Adiciona uma sublinha aos links ao passar o mouse */
 }
 
