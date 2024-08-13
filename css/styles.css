@@ -1,226 +1,237 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #fff;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    font-family: Arial, sans-serif; /* Define a fonte padrão como Arial ou uma fonte sans-serif */
+    background-color: #121212; /* Define a cor de fundo como um tom escuro */
+    color: #fff; /* Define a cor do texto como branco */
+    margin: 0; /* Remove a margem padrão do corpo da página */
+    padding: 20px; /* Adiciona um espaçamento interno de 20px ao redor do conteúdo */
+    display: flex; /* Define o layout do corpo como flexbox */
+    flex-direction: column; /* Organiza os elementos internos em uma coluna */
+    justify-content: center; /* Centraliza verticalmente os elementos */
+    align-items: center; /* Centraliza horizontalmente os elementos */
+    min-height: 100vh; /* Garante que a altura mínima do corpo seja 100% da altura da tela */
 }
 
 .container {
-    max-width: 800px;
-    width: 100%;
+    max-width: 800px; /* Define a largura máxima do container como 800px */
+    width: 100%; /* Define a largura do container como 100% do elemento pai */
 }
 
 #title {
-    text-align: center;
-    font-size: 2.5rem;
-    animation: blink 1.5s infinite;
-    background: linear-gradient(90deg, #ff6a00, #ee0979);
-    -webkit-background-clip: text;
-    color: transparent;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    letter-spacing: 2px;
-    padding: 10px;
+    text-align: center; /* Centraliza o texto do título */
+    font-size: 2.5rem; /* Define o tamanho da fonte como 2.5 rem */
+    animation: blink 1.5s infinite; /* Aplica uma animação de "piscar" que dura 1.5 segundos e repete infinitamente */
+    background: linear-gradient(90deg, #ff6a00, #ee0979); /* Aplica um gradiente de cor de laranja para rosa */
+    -webkit-background-clip: text; /* Garante que o gradiente seja aplicado apenas ao texto */
+    color: transparent; /* Define a cor do texto como transparente */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra ao texto para destacar */
+    letter-spacing: 2px; /* Aumenta o espaçamento entre as letras */
+    padding: 10px; /* Adiciona um espaçamento interno de 10px ao redor do título */
 }
 
 .subtitle {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-top: 10px;
-    color: #ff7e14;
+    text-align: center; /* Centraliza o texto do subtítulo */
+    font-size: 1.5rem; /* Define o tamanho da fonte como 1.5 rem */
+    margin-top: 10px; /* Adiciona uma margem superior de 10px */
+    color: #ff7e14; /* Define a cor do texto como laranja */
 }
 
 .description {
-    text-align: center;
-    font-size: 1rem;
-    margin-top: 5px;
-    color: #bbb;
-    font-style: italic;
-    border-bottom: 1px solid #555;
-    padding-bottom: 5px;
+    text-align: center; /* Centraliza o texto da descrição */
+    font-size: 1rem; /* Define o tamanho da fonte como 1 rem */
+    margin-top: 5px; /* Adiciona uma margem superior de 5px */
+    color: #bbb; /* Define a cor do texto como cinza claro */
+    font-style: italic; /* Define o estilo da fonte como itálico */
+    border-bottom: 1px solid #555; /* Adiciona uma borda inferior sólida de 1px de cor cinza escuro */
+    padding-bottom: 5px; /* Adiciona um espaçamento interno inferior de 5px */
 }
 
 @keyframes blink {
     0%, 100% {
-        opacity: 1;
+        opacity: 1; /* Define a opacidade como 1 no início e no fim da animação */
     }
     50% {
-        opacity: 0.5;
+        opacity: 0.5; /* Reduz a opacidade para 0.5 no meio da animação */
     }
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    width: 100%; /* Define a largura da tabela como 100% do elemento pai */
+    border-collapse: collapse; /* Remove o espaçamento entre as bordas das células da tabela */
+    margin-top: 20px; /* Adiciona uma margem superior de 20px */
 }
 
 th, td {
-    padding: 10px;
-    border: 1px solid #333;
-    text-align: left;
-    transition: background-color 0.3s;
-    vertical-align: middle;
+    padding: 10px; /* Adiciona um espaçamento interno de 10px nas células da tabela */
+    border: 1px solid #333; /* Adiciona uma borda sólida de 1px de cor cinza escuro nas células */
+    text-align: left; /* Alinha o texto à esquerda nas células */
+    transition: background-color 0.3s; /* Define uma transição suave de 0.3s para a cor de fundo ao passar o mouse */
+    vertical-align: middle; /* Alinha verticalmente o conteúdo das células ao centro */
 }
 
 tr:hover {
-    background-color: #1a1a1a;
+    background-color: #1a1a1a; /* Muda a cor de fundo da linha para um cinza escuro ao passar o mouse */
 }
 
 th:nth-child(1), td:nth-child(1) {
-    width: auto;
+    width: auto; /* Define a largura automática para a primeira coluna */
 }
 
 th:nth-child(2), td:nth-child(2) {
-    width: 40px;
+    width: 50px; /* Define a largura de 60px para a segunda coluna */
 }
 
 th:nth-child(3), td:nth-child(3) {
-    width: 100px;
+    width: 50px; /* Define a largura de 100px para a terceira coluna */
     text-align: center; /* Centraliza o conteúdo da coluna "Letra" */
 }
 
 th:nth-child(4), td:nth-child(4) {
-    width: 60px;
+    width: 50px; /* Define a largura de 60px para a quarta coluna */
     text-align: center; /* Centraliza o conteúdo da coluna "Ações" */
 }
 
 td:nth-child(1) input {
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 1rem;
-    height: 40px;
-    line-height: 40px;
+    width: 100%; /* Define a largura do input como 100% da célula */
+    box-sizing: border-box; /* Inclui o padding e a borda na largura total do input */
+    font-size: 1rem; /* Define o tamanho da fonte do input como 1 rem */
+    height: 45px; /* Define a altura do input como 40px */
+    line-height: 40px; /* Define a altura da linha do texto como 40px, centralizando verticalmente */
 }
 
 td:nth-child(2) input {
-    width: 5ch;
-    max-width: 60px;
-    min-width: 30%;
-    font-size: 1rem;
-    height: 40px;
-    line-height: 40px;
+    width: 5ch; /* Define a largura do input baseada no tamanho de 5 caracteres */
+    max-width: 60px; /* Define a largura máxima do input como 60px */
+    min-width: 30%; /* Define a largura mínima do input como 30% da célula */
+    font-size: 1rem; /* Define o tamanho da fonte do input como 1 rem */
+    height: 40px; /* Define a altura do input como 40px */
+    line-height: 40px; /* Define a altura da linha do texto como 40px, centralizando verticalmente */
 }
 
 button {
-    padding: 8px 15px;
-    background-color: #ff6a00;
-    border: 1px solid black;
-    color: white;
-    cursor: pointer;
-    height: 40px;
+    padding: 8px 15px; /* Adiciona um espaçamento interno de 8px nas extremidades e 15px nos lados */
+    background-color: #ff6a00; /* Define a cor de fundo do botão como laranja */
+    border: 1px solid black; /* Adiciona uma borda sólida preta de 1px ao botão */
+    color: white; /* Define a cor do texto do botão como branca */
+    cursor: pointer; /* Muda o cursor para uma mãozinha ao passar o mouse sobre o botão */
+    height: 45px; /* Define a altura do botão como 40px */
 }
 
 button:hover {
-    background-color: #ee0979;
+    background-color: #ee0979; /* Muda a cor de fundo do botão para rosa ao passar o mouse */
 }
 
 .actions {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    justify-content: center; /* Centraliza os botões na coluna "Ações" */
+    display: flex; /* Define o layout das ações como flexbox */
+    flex-direction: row; /* Organiza os botões em uma linha horizontal */
+    gap: 10px; /* Define um espaçamento de 10px entre os botões */
+    align-items: center; /* Alinha os botões verticalmente ao centro */
+    justify-content: center; /* Centraliza os botões horizontalmente */
 }
 
 .popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
+    display: none; /* Esconde o popup por padrão */
+    position: fixed; /* Fixa o popup em relação à tela */
+    top: 0; /* Define a posição superior do popup como 0 */
+    left: 0; /* Define a posição esquerda do popup como 0 */
+    width: 100%; /* Define a largura do popup como 100% da tela */
+    height: 100%; /* Define a altura do popup como 100% da tela */
+    background-color: rgba(0, 0, 0, 0.8); /* Define uma cor de fundo semitransparente preta */
+    justify-content: center; /* Centraliza o conteúdo do popup horizontalmente */
+    align-items: center; /* Centraliza o conteúdo do popup verticalmente */
+    padding: 20px; /* Adiciona um espaçamento interno de 20px ao popup */
+    box-sizing: border-box; /* Inclui o padding e a borda na largura total do popup */
 }
 
 .popup-content {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 90%;
-    max-height: 90%;
-    width: 100%;
-    box-sizing: border-box;
-    overflow-y: auto;
+    background-color: #333; /* Define a cor de fundo do conteúdo do popup como cinza escuro */
+    padding: 20px; /* Adiciona um espaçamento interno de 20px ao conteúdo do popup */
+    border-radius: 8px; /* Arredonda os cantos do conteúdo do popup em 8px */
+    max-width: 90%; /* Define a largura máxima do conteúdo do popup como 90% da tela */
+    max-height: 90%; /* Define a altura máxima do conteúdo do popup como 90% da tela */
+    width: 100%; /* Define a largura do conteúdo do popup como 100% do elemento pai */
+    box-sizing: border-box; /* Inclui o padding e a borda na largura total do conteúdo */
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical se o conteúdo ultrapassar a altura máxima */
+}
+
+.popup-close {
+    background-color: transparent; /* Define a cor de fundo do botão de fechar como transparente */
+    border: none; /* Remove a borda do botão de fechar */
+    color: white; /* Define a cor do texto do botão de fechar como branco */
+    font-size: 1.5rem; /* Define o tamanho da fonte do botão de fechar como 1.5 rem */
+    position: absolute; /* Posiciona o botão de fechar de forma absoluta em relação ao popup */
+    top: 10px; /* Define a posição superior do botão de fechar como 10px */
+    right: 10px; /* Define a posição direita do botão de fechar como 10px */
+    cursor: pointer; /* Muda o cursor para uma mãozinha ao passar o mouse sobre o botão de fechar */
 }
 
 textarea {
-    width: 100%;
-    height: calc(100vh - 200px);
-    max-height: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #222;
-    border: 1px solid #444;
-    color: white;
-    box-sizing: border-box;
+    width: 100%; /* Define a largura do textarea como 100% do elemento pai */
+    height: calc(100vh - 200px); /* Define a altura do textarea como a altura da viewport menos 200px */
+    max-height: 100%; /* Define a altura máxima do textarea como 100% do elemento pai */
+    margin-bottom: 10px; /* Adiciona uma margem inferior de 10px ao textarea */
+    padding: 10px; /* Adiciona um espaçamento interno de 10px ao textarea */
+    background-color: #222; /* Define a cor de fundo do textarea como cinza escuro */
+    border: 1px solid #444; /* Adiciona uma borda sólida de 1px de cor cinza mais escuro ao textarea */
+    color: white; /* Define a cor do texto do textarea como branca */
+    box-sizing: border-box; /* Inclui o padding e a borda na largura e altura total do textarea */
 }
 
 .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
+    position: absolute; /* Posiciona o elemento de forma absoluta em relação ao elemento pai mais próximo com posição relativa */
+    top: 10px; /* Define a posição superior do elemento como 10px */
+    right: 10px; /* Define a posição direita do elemento como 10px */
+    color: white; /* Define a cor do texto do elemento como branca */
+    font-size: 24px; /* Define o tamanho da fonte do elemento como 24px */
+    cursor: pointer; /* Muda o cursor para uma mãozinha ao passar o mouse sobre o elemento */
 }
 
 footer {
-    text-align: center;
-    margin-top: 30px;
-    padding: 10px 0;
-    background-color: #333;
-    width: 100%;
+    text-align: center; /* Centraliza o texto dentro do rodapé */
+    margin-top: 30px; /* Adiciona uma margem superior de 30px ao rodapé */
+    padding: 10px 0; /* Adiciona um espaçamento interno de 10px na parte superior e inferior do rodapé */
+    background-color: #333; /* Define a cor de fundo do rodapé como cinza escuro */
+    width: 100%; /* Define a largura do rodapé como 100% do elemento pai */
 }
 
 footer p {
-    margin: 5px 0;
-    color: #bbb;
+    margin: 5px 0; /* Define uma margem superior e inferior de 5px para os parágrafos no rodapé */
+    color: #bbb; /* Define a cor do texto dos parágrafos como cinza claro */
 }
 
 footer a {
-    color: #ff6a00;
-    text-decoration: none;
+    color: #ff6a00; /* Define a cor dos links no rodapé como laranja */
+    text-decoration: none; /* Remove a sublinha dos links no rodapé */
 }
 
 footer a:hover {
-    color: #ee0979;
-    text-decoration: underline;
+    color: #ee0979; /* Muda a cor dos links para rosa ao passar o mouse */
+    text-decoration: underline; /* Adiciona uma sublinha aos links ao passar o mouse */
 }
 
 @media (max-width: 600px) {
     body {
-        padding: 10px;
+        padding: 10px; /* Reduz o espaçamento interno do corpo para 10px em telas menores */
     }
 
     #title {
-        font-size: 2rem;
+        font-size: 2rem; /* Reduz o tamanho da fonte do título para 2rem em telas menores */
     }
 
     .subtitle {
-        font-size: 1.2rem;
+        font-size: 1.2rem; /* Reduz o tamanho da fonte do subtítulo para 1.2rem em telas menores */
     }
 
     table, th, td {
-        font-size: 0.9rem;
-        padding: 5px;
+        font-size: 0.9rem; /* Reduz o tamanho da fonte da tabela e das células para 0.9rem em telas menores */
+        padding: 5px; /* Reduz o espaçamento interno das células para 5px em telas menores */
     }
 
     td:nth-child(2) input {
-        width: 100%;
-        max-width: none;
+        width: 100%; /* Define a largura do input na segunda coluna como 100% da célula em telas menores */
+        max-width: none; /* Remove a largura máxima do input em telas menores */
     }
 
     .actions {
-        flex-direction: column;
+        flex-direction: column; /* Organiza os botões das ações em uma coluna em telas menores */
     }
 }
