@@ -77,16 +77,16 @@ th:nth-child(1), td:nth-child(1) {
 }
 
 th:nth-child(2), td:nth-child(2) {
-    width: 50px; /* Define a largura de 60px para a segunda coluna */
+    width: 50px; /* Define a largura de 50px para a segunda coluna */
 }
 
 th:nth-child(3), td:nth-child(3) {
-    width: 50px; /* Define a largura de 100px para a terceira coluna */
+    width: 100px; /* Define a largura de 100px para a terceira coluna */
     text-align: center; /* Centraliza o conteúdo da coluna "Letra" */
 }
 
 th:nth-child(4), td:nth-child(4) {
-    width: 50px; /* Define a largura de 60px para a quarta coluna */
+    width: 60px; /* Define a largura de 60px para a quarta coluna */
     text-align: center; /* Centraliza o conteúdo da coluna "Ações" */
 }
 
@@ -94,13 +94,13 @@ td:nth-child(1) input {
     width: 100%; /* Define a largura do input como 100% da célula */
     box-sizing: border-box; /* Inclui o padding e a borda na largura total do input */
     font-size: 1rem; /* Define o tamanho da fonte do input como 1 rem */
-    height: 45px; /* Define a altura do input como 40px */
+    height: 45px; /* Define a altura do input como 45px */
     line-height: 40px; /* Define a altura da linha do texto como 40px, centralizando verticalmente */
     text-align: center;
 }
 
 td:nth-child(2) input {
-    width: 4ch; /* Define a largura do input baseada no tamanho de 5 caracteres */
+    width: 4ch; /* Define a largura do input baseada no tamanho de 4 caracteres */
     max-width: 60px; /* Define a largura máxima do input como 60px */
     min-width: 30%; /* Define a largura mínima do input como 30% da célula */
     font-size: 1rem; /* Define o tamanho da fonte do input como 1 rem */
@@ -108,7 +108,6 @@ td:nth-child(2) input {
     line-height: 40px; /* Define a altura da linha do texto como 40px, centralizando verticalmente */
     text-align: center;
 }
-
 
 button {
     padding: 8px 15px; /* Adiciona um espaçamento interno de 8px nas extremidades e 15px nos lados */
@@ -120,14 +119,14 @@ button {
 }
 
 button:hover {
-    background-color: #7a2d01; /* Muda a cor de fundo do botão para rosa ao passar o mouse */
+    background-color: #7a2d01; /* Muda a cor de fundo do botão para um verde mais escuro ao passar o mouse */
 }
 
 .add-music {
     margin-top: 10px;
     padding: 10px 20px; /* Adiciona um espaçamento interno maior */
-    background-color: #ff6a00; /* Define a cor de fundo como verde */
-    border: 1px solid #ff6a00; /* Adiciona uma borda sólida verde mais escuro */
+    background-color: #ff6a00; /* Define a cor de fundo como laranja */
+    border: 1px solid #ff6a00; /* Adiciona uma borda sólida laranja mais escuro */
     color: white; /* Define a cor do texto como branca */
     font-size: 1rem; /* Define o tamanho da fonte como 1 rem */
     border-radius: 5px; /* Arredonda os cantos do botão */
@@ -139,7 +138,6 @@ button:hover {
     background-color: #7a2d01; /* Muda a cor de fundo para um verde mais escuro ao passar o mouse */
     transform: scale(1.05); /* Aumenta levemente o tamanho do botão ao passar o mouse */
 }
-
 
 .actions {
     display: flex; /* Define o layout das ações como flexbox */
@@ -156,22 +154,35 @@ button:hover {
     left: 0; /* Define a posição esquerda do popup como 0 */
     width: 100%; /* Define a largura do popup como 100% da tela */
     height: 100%; /* Define a altura do popup como 100% da tela */
-    background-color: rgba(0, 0, 0, 0.8); /* Define uma cor de fundo semitransparente preta */
+    background-color: rgba(0, 0, 0, 0.8); /* Adiciona um fundo preto com opacidade ao popup */
     justify-content: center; /* Centraliza o conteúdo do popup horizontalmente */
     align-items: center; /* Centraliza o conteúdo do popup verticalmente */
-    padding: 20px; /* Adiciona um espaçamento interno de 20px ao popup */
-    box-sizing: border-box; /* Inclui o padding e a borda na largura total do popup */
+    z-index: 1000; /* Define a ordem do elemento na pilha de camadas */
 }
 
 .popup-content {
-    background-color: #333; /* Define a cor de fundo do conteúdo do popup como cinza escuro */
-    padding: 20px; /* Adiciona um espaçamento interno de 20px ao conteúdo do popup */
-    border-radius: 8px; /* Arredonda os cantos do conteúdo do popup em 8px */
-    max-width: 90%; /* Define a largura máxima do conteúdo do popup como 90% da tela */
-    max-height: 90%; /* Define a altura máxima do conteúdo do popup como 90% da tela */
-    width: 100%; /* Define a largura do conteúdo do popup como 100% do elemento pai */
-    box-sizing: border-box; /* Inclui o padding e a borda na largura total do conteúdo */
-    overflow-y: auto; /* Adiciona uma barra de rolagem vertical se o conteúdo ultrapassar a altura máxima */
+    background-color: #fff; /* Define a cor de fundo do conteúdo do popup como branca */
+    padding: 20px; /* Adiciona um espaçamento interno de 20px */
+    border-radius: 10px; /* Arredonda os cantos do conteúdo do popup */
+    position: relative; /* Define a posição relativa para o fechamento do popup */
+}
+
+.popup-content h2 {
+    margin: 0; /* Remove a margem padrão do título do popup */
+}
+
+.popup-content button.close {
+    position: absolute; /* Define a posição do botão de fechar como absoluta */
+    top: 10px; /* Define a posição superior do botão como 10px */
+    right: 10px; /* Define a posição direita do botão como 10px */
+    background-color: transparent; /* Define a cor de fundo do botão como transparente */
+    border: none; /* Remove a borda do botão */
+    font-size: 1.5rem; /* Define o tamanho da fonte do botão como 1.5 rem */
+    cursor: pointer; /* Muda o cursor para uma mãozinha ao passar o mouse sobre o botão */
+}
+
+.popup-content button.close:hover {
+    color: #ff0000; /* Muda a cor do botão de fechar para vermelho ao passar o mouse */
 }
 
 .popup-close {
