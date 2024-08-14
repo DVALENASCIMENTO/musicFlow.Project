@@ -19,8 +19,8 @@ function addMusic() {
     toneCell.innerHTML = `<input type="text" name="tom" placeholder="Tom" maxlength="5">`;
     lyricsCell.innerHTML = `<button onclick="editLyrics(this)">Letra</button>`;
     actionsCell.innerHTML = `
-        <button onclick="moveUp(this)">⬆️</button>
-        <button onclick="moveDown(this)">⬇️</button>
+        <button onclick="moveUp(this)">↑</button>
+        <button onclick="moveDown(this)">↓</button>
     `;
     deleteCell.innerHTML = `<button class="remove-button" style="color: red;">X</button>`;
 
