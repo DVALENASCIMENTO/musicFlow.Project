@@ -1,98 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MusicFlow</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <style>
-        .dragging {
-            opacity: 0.5;
-        }
-        .popup {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
-            padding-top: 60px;
-        }
-        .popup-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        /* Estilos adicionais para o título e descrição */
-        #title {
-            animation: blink 1s infinite;
-        }
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1 id="title">MusicFlow</h1>
-        <h2 id="subtitle" class="subtitle">Repertório</h2> <!-- Subtítulo -->
-        <p id="description" class="description">Crie seu repertório de músicas e mantenha suas letras organizadas.</p> <!-- Texto abaixo do subtítulo -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MusicFlow</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="title">MusicFlow</h1>
+            <h2 id="subtitle" class="subtitle">Repertório</h2> <!-- Subtítulo -->
+            <p id="description" class="description">Crie seu repertório de músicas e mantenha suas letras organizadas.</p> <!-- Texto abaixo do subtítulo -->
 
-        <table id="music-table">
-            <thead>
-                <tr>
-                    <th>Música</th>
-                    <th>Tom</th>
-                    <th>Letra</th>
-                    <th>⇅</th>
-                    <th style="display:none;">Remover</th> <!-- Coluna oculta -->
-                </tr>
-            </thead>
-            
-            <tbody id="music-list">
-                <!-- Linhas das músicas serão inseridas aqui -->
-            </tbody>
-        </table>
-        <button id="add-music" class="add-music">Adicionar Nova Música</button>
-    </div>
+            <table id="music-table">
+                <thead>
+                    <tr>
+                        <th>Música</th>
+                        <th>Tom</th>
+                        <th>Letra</th>
+                        <th>⇅</th>
+                        <th style="display:none;">Remover</th> <!-- Coluna oculta -->
+                    </tr>
+                </thead>
+                <tbody id="music-list">
+                    <!-- Linhas das músicas serão inseridas aqui -->
+                </tbody>
+            </table>
+            <button id="add-music" class="add-music">Adicionar Nova Música</button>
 
-    <!-- Popup para editar letra -->
-    <div id="lyrics-popup" class="popup">
-        <div class="popup-content">
-            <span id="close-popup" class="close">&times;</span>
-            <textarea id="lyrics-editor"></textarea>
-            <button id="save-lyrics">Salvar Letra</button>
+            <!-- Botão para salvar repertório -->
+            <button id="save-repertoire" class="save-repertoire">Salvar Repertório</button>
+
+            <!-- Botão para salvar alterações -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+            <button id="save-changes"><i class="fas fa-save"></i></button>
+                </div>
+
+        <!-- Popup para editar letra -->
+        <div id="lyrics-popup" class="popup">
+            <div class="popup-content">
+                <span id="close-popup" class="close">&times;</span>
+                <textarea id="lyrics-editor"></textarea>
+                <button id="save-lyrics">Salvar Letra</button>
+            </div>
         </div>
-    </div>
 
-    <footer>
-        <p>Diego Vale do Nascimento - Analista e Desenvolvedor de Sistemas</p>
-        <p>
-            <a href="https://www.linkedin.com/in/diego-vale-do-nascimento-48212215b/" target="_blank">LinkedIn</a> |
-            <a href="https://github.com/DVALENASCIMENTO" target="_blank">GitHub</a>
-        </p>
-    </footer>
+        <!-- Popup para renomear repertório -->
+        <div id="rename-popup" class="popup">
+            <div class="popup-content">
+                <span id="close-rename-popup" class="close">&times;</span>
+                <label for="repertoire-name">Renomear Repertório:</label>
+                <input type="text" id="repertoire-name" />
+                <button id="confirm-rename">Salvar Nome</button>
+            </div>
+        </div>
+        
+        <div id="repertoire-container" style="margin-top: 10px;"></div>
 
-    <script src="js/script.js"></script>
-</body>
-</html>
+        <footer>
+            <p>Diego Vale do Nascimento - Analista e Desenvolvedor de Sistemas</p>
+            <p>
+                <a href="https://www.linkedin.com/in/diego-vale-do-nascimento-48212215b/" target="_blank">LinkedIn</a> |
+                <a href="https://github.com/DVALENASCIMENTO" target="_blank">GitHub</a>
+            </p>
+        </footer>
+
+        <script src="js/script.js"></script>
+    </body>
+    </html>
