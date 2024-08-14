@@ -25,7 +25,6 @@ body {
     color: transparent; /* Define a cor do texto como transparente */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra ao texto para destacar */
     letter-spacing: 2px; /* Aumenta o espaçamento entre as letras */
-    padding: 10px; /* Adiciona um espaçamento interno de 10px ao redor do título */
 }
 
 .subtitle {
@@ -127,6 +126,20 @@ button:hover {
     background-color: #7a2d01; /* Muda a cor de fundo do botão para um verde mais escuro ao passar o mouse */
 }
 
+#save-changes {
+    width: 30px; /* Largura do botão */
+    height: 30px; /* Altura do botão */
+    border: none; /* Remover borda */
+    cursor: pointer; /* Cursor pointer para indicar que é clicável */
+    background: url('img/save-icon.jpg'); /* Imagem de fundo */
+    background-size: 20px 20px; /* Definir o tamanho da imagem */
+    background-repeat: no-repeat; /* Não repetir a imagem */
+    background-position: center; /* Centralizar a imagem no botão */
+}
+
+
+
+
 .add-music {
     margin-top: 10px;
     padding: 10px 20px; /* Adiciona um espaçamento interno maior */
@@ -136,13 +149,15 @@ button:hover {
     font-size: 1rem; /* Define o tamanho da fonte como 1 rem */
     border-radius: 5px; /* Arredonda os cantos do botão */
     transition: background-color 0.3s, transform 0.2s; /* Adiciona transições para a cor de fundo e transformação */
-    cursor: pointer; /* Muda o cursor para uma mãozinha ao passar o mouse sobre o botão */
+    cursor: pointer; /* Muda o cursor para uma mãozinha ao passar o mouse */
 }
 
 .add-music:hover {
     background-color: #7a2d01; /* Muda a cor de fundo para um verde mais escuro ao passar o mouse */
     transform: scale(1.05); /* Aumenta levemente o tamanho do botão ao passar o mouse */
 }
+
+
 
 .actions {
     display: flex; /* Define o layout das ações como flexbox */
@@ -152,53 +167,98 @@ button:hover {
     justify-content: center; /* Centraliza os botões horizontalmente */
 }
 
+.dragging {
+    opacity: 0.5; /* Aplica uma opacidade de 50% ao elemento que está sendo arrastado */
+}
+
 .popup {
     display: none; /* Esconde o popup por padrão */
     position: fixed; /* Fixa o popup em relação à tela */
     top: 0; /* Define a posição superior do popup como 0 */
     left: 0; /* Define a posição esquerda do popup como 0 */
-    width: 100%; /* Define a largura do popup como 100% da tela */
-    height: 100%; /* Define a altura do popup como 100% da tela */
-    background-color: rgba(0, 0, 0, 0.8); /* Adiciona um fundo preto com opacidade ao popup */
+    width: 100vw; /* Define a largura do popup como 100% da largura da viewport */
+    height: 100vh; /* Define a altura do popup como 100% da altura da viewport */
+    background: rgba(0, 0, 0, 0.8); /* Adiciona um fundo preto semitransparente */
+    z-index: 1000; /* Define uma camada acima de outros elementos */
     justify-content: center; /* Centraliza o conteúdo do popup horizontalmente */
     align-items: center; /* Centraliza o conteúdo do popup verticalmente */
-    z-index: 1000; /* Define a ordem do elemento na pilha de camadas */
 }
 
 .popup-content {
-    background-color: #fff; /* Define a cor de fundo do conteúdo do popup como branca */
-    padding: 20px; /* Adiciona um espaçamento interno de 20px */
-    border-radius: 10px; /* Arredonda os cantos do conteúdo do popup */
-    position: relative; /* Define a posição relativa para o fechamento do popup */
+    background: #fff; /* Cor de fundo do conteúdo do popup */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 10px; /* Arredonda os cantos */
+    position: relative; /* Para o botão de fechar */
+    width: auto; /* Define a largura automática */
+    max-width: 90%; /* Define uma largura máxima de 90% da viewport */
+    max-height: 90%; /* Define uma altura máxima de 90% da viewport */
+    overflow-y: auto; /* Adiciona rolagem se o conteúdo for muito longo */
 }
 
-.popup-content h2 {
-    margin: 0; /* Remove a margem padrão do título do popup */
-}
 
-.popup-content button.close {
-    position: absolute; /* Define a posição do botão de fechar como absoluta */
-    top: 10px; /* Define a posição superior do botão como 10px */
-    right: 10px; /* Define a posição direita do botão como 10px */
-    background-color: transparent; /* Define a cor de fundo do botão como transparente */
+.close-popup {
+    position: absolute; /* Posiciona o botão de fechar de forma absoluta em relação ao conteúdo do popup */
+    top: 10px; /* Define a posição superior como 10px */
+    right: 10px; /* Define a posição direita como 10px */
+    background: none; /* Remove o fundo do botão */
     border: none; /* Remove a borda do botão */
-    font-size: 1.5rem; /* Define o tamanho da fonte do botão como 1.5 rem */
-    cursor: pointer; /* Muda o cursor para uma mãozinha ao passar o mouse sobre o botão */
+    font-size: 1.5rem; /* Define o tamanho da fonte como 1.5 rem */
+    cursor: pointer; /* Muda o cursor para uma mãozinha ao passar o mouse */
 }
 
-.popup-content button.close:hover {
-    color: #ff0000; /* Muda a cor do botão de fechar para vermelho ao passar o mouse */
+.footer {
+    position: absolute; /* Posiciona o rodapé de forma absoluta */
+    bottom: 0; /* Define a posição inferior como 0 */
+    width: 100%; /* Define a largura do rodapé como 100% */
+    text-align: center; /* Centraliza o texto do rodapé */
+    font-size: 0.9rem; /* Define o tamanho da fonte do rodapé como 0.9 rem */
+    color: #bbb; /* Define a cor do texto do rodapé como cinza claro */
+    padding: 10px 0; /* Adiciona um espaçamento interno de 10px na parte superior e inferior do rodapé */
+    border-top: 1px solid #444; /* Adiciona uma borda superior de 1px de cor cinza escuro */
 }
 
-.popup-close {
-    background-color: transparent; /* Define a cor de fundo do botão de fechar como transparente */
-    border: none; /* Remove a borda do botão de fechar */
-    color: white; /* Define a cor do texto do botão de fechar como branco */
-    font-size: 1.5rem; /* Define o tamanho da fonte do botão de fechar como 1.5 rem */
-    position: absolute; /* Posiciona o botão de fechar de forma absoluta em relação ao popup */
-    top: 10px; /* Define a posição superior do botão de fechar como 10px */
-    right: 10px; /* Define a posição direita do botão de fechar como 10px */
-    cursor: pointer; /* Muda o cursor para uma mãozinha ao passar o mouse sobre o botão de fechar */
+
+footer p {
+    margin: 5px 0; /* Define uma margem superior e inferior de 5px para os parágrafos no rodapé */
+    color: #bbb; /* Define a cor do texto dos parágrafos como cinza claro */
+}
+
+footer a {
+    color: #18c9ff; /* Define a cor dos links no rodapé como laranja */
+    text-decoration: none; /* Remove a sublinha dos links no rodapé */
+}
+
+footer a:hover {
+    color: #ff6a00; /* Muda a cor dos links para rosa ao passar o mouse */
+    text-decoration: underline; /* Adiciona uma sublinha aos links ao passar o mouse */
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px; /* Reduz o espaçamento interno do corpo para 10px em telas menores */
+    }
+
+    #title {
+        font-size: 2rem; /* Reduz o tamanho da fonte do título para 2rem em telas menores */
+    }
+
+    .subtitle {
+        font-size: 1.2rem; /* Reduz o tamanho da fonte do subtítulo para 1.2rem em telas menores */
+    }
+
+    table, th, td {
+        font-size: 0.9rem; /* Reduz o tamanho da fonte da tabela e das células para 0.9rem em telas menores */
+        padding: 5px; /* Reduz o espaçamento interno das células para 5px em telas menores */
+    }
+
+    td:nth-child(2) input {
+        width: 100%; /* Define a largura do input na segunda coluna como 100% da célula em telas menores */
+        max-width: none; /* Remove a largura máxima do input em telas menores */
+    }
+
+    .actions {
+        flex-direction: column; /* Organiza os botões das ações em uma coluna em telas menores */
+    }
 }
 
 textarea {
